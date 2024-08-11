@@ -9,19 +9,32 @@ def sign_up_by_django(request):
     info = {}
     if request.method == 'POST':
         form = UserRegister(request.POST)
+        print("Данные, полученные из формы:", request.POST)
         if form.is_valid():
+            print("Форма валидна!")
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             repeat_password = form.cleaned_data['repeat_password']
             age = form.cleaned_data['age']
+            print(f"Username: {username}, Age: {age}")
+
             if password != repeat_password:
                 info['error'] = 'Пароли не совпадают'
+                print("Пароли не совпадают")
+
             elif age < 18:
                 info['error'] = 'Вы должны быть старше 18'
+                print("Возраст меньше 18 лет")
             elif username in users:
                 info['error'] = 'Пользователь уже существует'
+                print("Пользователь уже существует")
             else:
                 info['message'] = f'Приветствуем, {username}!'
+                print(f"Регистрация прошла успешно: {username}")
+
+        else:
+            print("Форма невалидна, ошибки:", form.errors)
+
         info['form'] = form
     else:
         info['form'] = UserRegister()
