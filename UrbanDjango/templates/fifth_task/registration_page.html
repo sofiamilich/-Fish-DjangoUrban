@@ -5,30 +5,42 @@
 </head>
 <body>
     <h1>Registration</h1>
-    <form action="" method="post">
+
+    {% if error %}
+        <div>
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+
+    {% if form.errors %}
+        <div>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form method="post">
         {% csrf_token %}
-        {% if form.errors %}
-            <div>
-                <p>{{ form.error }}</p>
-            </div>
-        {% endif %}
         <div>
-            <label for="id_username">Username:</label>
-            {{ form.username }}
+            <label for="username">Введите логин:</label>
+            <input type="text" id="username" name="username" maxlength="30" required><br>
         </div>
         <div>
-            <label for="id_password">Password:</label>
-            {{ form.password }}
+            <label for="password">Введите пароль:</label>
+            <input type="password" id="password" name="password" minlength="8" required><br>
         </div>
         <div>
-            <label for="id_repeat_password">Repeat Password:</label>
-            {{ form.repeat_password }}
+            <label for="repeat_password">Повторите пароль:</label>
+            <input type="password" id="repeat_password" name="repeat_password" minlength="8" required><br>
         </div>
         <div>
-            <label for="id_age">Age:</label>
-            {{ form.age }}
+            <label for="age">Введите свой возраст:</label>
+            <input type="number" id="age" name="age" maxlength="3" required><br>
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">Зарегистрироваться</button>
     </form>
 </body>
 </html>

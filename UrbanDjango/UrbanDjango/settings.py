@@ -65,6 +65,7 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'templates/fourth_task'),
                  os.path.join(BASE_DIR, 'templates/fifth_task'),
                  os.path.join(BASE_DIR, 'templates/second_task'),
+                 os.path.join(BASE_DIR, 'templates'),
                  ],
 
 
