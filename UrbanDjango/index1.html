@@ -1,0 +1,21 @@
+{% extends "menu.html" %}
+{% block pagename %}
+    <h1 align="centr">Корзина</h1>
+{% endblock %}
+
+
+
+{% block menu %}
+{{ block.super }}
+{% endblock %}
+
+
+
+{% block content %}
+{% endblock %}
+
+
+{% block footer %}
+    <h3 align="left">Извините, но ваша корзина пуста</h3>
+    <button><h2><a href="http://127.0.0.1:8000/" >Вернуться обратно</a>></h2></button>
+{% endblock %}
